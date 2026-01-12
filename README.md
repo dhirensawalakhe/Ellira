@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
   # High-Fidelity Landing Page Design
 
@@ -9,3 +10,7 @@
 
   Run `npm run dev` to start the development server.
   
+=======
+# Ellira
+Shooping website for ellira
+>>>>>>> cb10d70fe89186e3f3856824751e0c1dc99bee25

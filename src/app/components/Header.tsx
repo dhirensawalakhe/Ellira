@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import { ContactSection } from "./ContactSection";
-
+import Ellira_logo from '../../assets/Ellira logo.png';
 interface HeaderProps {
   onCartOpen: () => void;
 }
