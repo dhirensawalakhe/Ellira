@@ -1,0 +1,4 @@
+- [x] Create src/app/pages/About.tsx with basic About component
+- [ ] Fix Header.tsx by replacing corrupted import with correct one
+- [ ] Fix Footer.tsx by removing '=======' from start
+- [ ] Run npm run dev to verify fixes
