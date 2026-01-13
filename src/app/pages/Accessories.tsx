@@ -75,6 +75,33 @@ export default function Accessories() {
         </div>
       </section>
 
+      {/* Coming Soon Section */}
+      <section className="py-24 bg-gradient-to-br from-[#0F0F1E] via-[#1A1A2E] to-[#0F0F1E]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-gradient-to-br from-[#25253C] to-[#1A1A2E] p-12 rounded-2xl border border-[#C9A961]/30 shadow-2xl">
+              <div className="w-24 h-24 bg-[#C9A961]/10 rounded-full flex items-center justify-center mx-auto mb-8">
+                <Home className="w-12 h-12 text-[#C9A961]" />
+              </div>
+              <h2 className="font-['Playfair_Display'] text-3xl md:text-4xl mb-6 text-[#F8F6F1]">Home Decor Coming Soon</h2>
+              <p className="text-xl text-[#C7C7CC] mb-8 leading-relaxed">
+                We're expanding our collection with an exciting range of home decor items. Stay tuned for beautiful wall hangings, decorative mirrors, scented candles, and much more to complete your perfect living space.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 mb-8">
+                <span className="bg-[#C9A961]/20 text-[#C9A961] px-4 py-2 rounded-full text-sm font-medium">Wall Hangings</span>
+                <span className="bg-[#C9A961]/20 text-[#C9A961] px-4 py-2 rounded-full text-sm font-medium">Decorative Mirrors</span>
+                <span className="bg-[#C9A961]/20 text-[#C9A961] px-4 py-2 rounded-full text-sm font-medium">Scented Candles</span>
+                <span className="bg-[#C9A961]/20 text-[#C9A961] px-4 py-2 rounded-full text-sm font-medium">Tableware</span>
+                <span className="bg-[#C9A961]/20 text-[#C9A961] px-4 py-2 rounded-full text-sm font-medium">And More...</span>
+              </div>
+              <button className="bg-[#C9A961] hover:bg-[#D4B574] text-[#0F0F1E] px-8 py-4 rounded-lg font-medium transition-colors duration-300 shadow-lg hover:shadow-xl">
+                Notify Me When Available
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-24 bg-[#0F0F1E]">
         <div className="container mx-auto px-6">

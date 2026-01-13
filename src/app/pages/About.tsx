@@ -1,4 +1,4 @@
-import { Award, Users, Clock, Heart, Star, Shield } from 'lucide-react';
+import { Award, Users, Clock, Heart, Star, Shield, MapPin, Phone, Mail } from 'lucide-react';
 
 export default function About() {
   return (
@@ -240,6 +240,107 @@ export default function About() {
               <p className="text-[#C7C7CC]">
                 We never compromise on quality, from the selection of premium materials to the final finishing touches that make each piece extraordinary.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Location & Contact Section */}
+      <section className="py-24 bg-[#0F0F1E]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-['Playfair_Display'] text-4xl mb-6 text-[#F8F6F1]">Visit Our Workshop</h2>
+            <p className="text-[#C7C7CC] max-w-2xl mx-auto">
+              Experience the birthplace of divine craftsmanship in the heart of India's cultural heritage
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Map */}
+            <div className="bg-gradient-to-br from-[#1A1A2E] to-[#25253C] p-8 rounded-lg border border-[#C9A961]/20">
+              <h3 className="font-['Playfair_Display'] text-2xl mb-6 text-[#F8F6F1]">Our Location</h3>
+              <div className="aspect-video rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.123456789012!2d77.12345678901234!3d28.65432109876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d1d1d1d1d1d%3A0x1234567890abcdef!2sEllira%20Workshop!5e0!3m2!1sen!2sin!4v1703123456789!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-lg"
+                ></iframe>
+              </div>
+              <div className="mt-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <MapPin className="w-6 h-6 text-[#C9A961] mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-[#F8F6F1] font-medium mb-1">Workshop Address</h4>
+                    <p className="text-[#C7C7CC] text-sm">
+                      123 Artisan Street, Old City<br />
+                      Jaipur, Rajasthan 302001<br />
+                      India
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-[#1A1A2E] to-[#25253C] p-8 rounded-lg border border-[#C9A961]/20">
+                <h3 className="font-['Playfair_Display'] text-2xl mb-6 text-[#F8F6F1]">Get In Touch</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <Phone className="w-6 h-6 text-[#C9A961] mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="text-[#F8F6F1] font-medium mb-1">Phone</h4>
+                      <p className="text-[#C7C7CC] text-sm">+91 98765 43210</p>
+                      <p className="text-[#C7C7CC] text-sm">+91 98765 43211</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Mail className="w-6 h-6 text-[#C9A961] mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="text-[#F8F6F1] font-medium mb-1">Email</h4>
+                      <p className="text-[#C7C7CC] text-sm">hello@ellira.com</p>
+                      <p className="text-[#C7C7CC] text-sm">support@ellira.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Clock className="w-6 h-6 text-[#C9A961] mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="text-[#F8F6F1] font-medium mb-1">Business Hours</h4>
+                      <p className="text-[#C7C7CC] text-sm">Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                      <p className="text-[#C7C7CC] text-sm">Sunday: 10:00 AM - 4:00 PM</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-[#25253C] to-[#1A1A2E] p-8 rounded-lg border border-[#C9A961]/20">
+                <h3 className="font-['Playfair_Display'] text-2xl mb-6 text-[#F8F6F1]">Why Visit Us?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 bg-[#C9A961] rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-[#C7C7CC] text-sm">Witness master artisans at work in our traditional workshop</p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 bg-[#C9A961] rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-[#C7C7CC] text-sm">Explore our complete collection of mandirs and accessories</p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 bg-[#C9A961] rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-[#C7C7CC] text-sm">Experience personalized consultations with our design experts</p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-2 h-2 bg-[#C9A961] rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-[#C7C7CC] text-sm">Learn about India's rich woodworking heritage and traditions</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

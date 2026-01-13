@@ -8,7 +8,7 @@ export default function Contact() {
           Contact Us
         </h1>
         <p className="text-[#F8F6F1] text-center mb-12 max-w-2xl mx-auto">
-          Get in touch with us for custom orders, inquiries, or to learn more about our craftsmanship.
+          Ellira, By World of Poojaghar. Where tradition meets elegance, crafting exquisite wooden temples that bring positivity, harmony, and prosperity into your home.
         </p>
       </div>
       <ContactSection />
