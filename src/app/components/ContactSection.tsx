@@ -178,7 +178,12 @@ export function ContactSection({
           </div>
 
           <div className="bg-[#1A1A2E] border border-[#C9A961]/20 rounded-lg overflow-hidden">
-            <div className="aspect-video w-full">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=World+of+Poojaghar+Nashik"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block aspect-video w-full relative group cursor-pointer"
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.123456789012!2d73.7890123456789!3d19.87654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb1234567890%3A0xabcdef1234567890!2sWorld%20of%20Poojaghar!5e0!3m2!1sen!2sin!4v1703123456789!5m2!1sen!2sin"
                 width="100%"
@@ -189,7 +194,12 @@ export function ContactSection({
                 referrerPolicy="no-referrer-when-downgrade"
                 className="w-full h-full"
               ></iframe>
-            </div>
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                <div className="bg-[#C9A961] text-[#0F0F1E] px-4 py-2 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Click to Open in Google Maps
+                </div>
+              </div>
+            </a>
             <div className="p-6 bg-[#0F0F1E]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex gap-4 items-start">

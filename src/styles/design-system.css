@@ -1,0 +1,273 @@
+/* Ellira Design System - Premium E-commerce Theme */
+
+/* Color Palette */
+:root {
+  /* Primary Brand Colors */
+  --ellira-primary: #0F0F1E;
+  --ellira-secondary: #1A1A2E;
+  --ellira-tertiary: #25253C;
+  --ellira-accent: #2D2D4A;
+
+  /* Gold Accents */
+  --ellira-gold: #C9A961;
+  --ellira-gold-light: #D4B574;
+  --ellira-gold-dark: #B89850;
+  --ellira-gold-muted: rgba(201, 169, 97, 0.1);
+
+  /* Neutral Colors */
+  --ellira-cream: #F8F6F1;
+  --ellira-grey: #8E8E93;
+  --ellira-grey-light: #C7C7CC;
+  --ellira-grey-dark: #636366;
+
+  /* Semantic Colors */
+  --ellira-success: #34C759;
+  --ellira-warning: #FF9500;
+  --ellira-error: #FF3B30;
+  --ellira-info: #007AFF;
+}
+
+/* Typography Scale */
+:root {
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+  --text-h1: clamp(2rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 2.5vw, 1.75rem);
+  --text-h4: clamp(1.125rem, 2vw, 1.5rem);
+  --text-body: clamp(1rem, 1.5vw, 1.125rem);
+  --text-small: clamp(0.875rem, 1.25vw, 1rem);
+  --text-xs: 0.75rem;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+}
+
+/* Spacing Scale */
+:root {
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+}
+
+/* Border Radius */
+:root {
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* Shadows */
+:root {
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  --shadow-gold: 0 0 20px rgba(201, 169, 97, 0.3);
+  --shadow-gold-lg: 0 0 40px rgba(201, 169, 97, 0.2);
+}
+
+/* Transitions */
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Component Styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--ellira-gold) 0%, var(--ellira-gold-dark) 100%);
+  color: var(--ellira-primary);
+  font-weight: 600;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-small);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ellira-gold);
+  border: 2px solid var(--ellira-gold);
+  font-weight: 600;
+  padding: calc(var(--space-md) - 2px) calc(var(--space-xl) - 2px);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-small);
+}
+
+.btn-secondary:hover {
+  background: var(--ellira-gold);
+  color: var(--ellira-primary);
+  transform: translateY(-2px);
+}
+
+.card {
+  background: var(--ellira-secondary);
+  border: 1px solid rgba(201, 169, 97, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  border-color: rgba(201, 169, 97, 0.3);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.input {
+  background: transparent;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  color: var(--ellira-cream);
+  font-size: var(--text-body);
+  transition: all var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ellira-gold);
+  box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+}
+
+.section {
+  padding: var(--space-4xl) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.section-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-h2);
+  color: var(--ellira-cream);
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.section-subtitle {
+  font-size: var(--text-body);
+  color: var(--ellira-grey);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--ellira-gold) 0%, var(--ellira-cream) 50%, var(--ellira-gold) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 3s ease infinite;
+}
+
+@keyframes textGradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.glass-effect {
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 169, 97, 0.1);
+}
+
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-responsive {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    padding: var(--space-lg);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ellira-primary: #0F0F1E;
+    --ellira-secondary: #1A1A2E;
+    --ellira-tertiary: #25253C;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --ellira-gold: #FFD700;
+    --ellira-grey: #FFFFFF;
+    --ellira-grey-light: #E0E0E0;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

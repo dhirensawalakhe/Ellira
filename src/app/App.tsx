@@ -4,8 +4,7 @@ import { Toaster } from "sonner";
 import { CartProvider } from "./contexts/CartContext";
 import { CompareProvider } from "./contexts/CompareContext";
 import { WishlistProvider } from "./contexts/WishlistContext";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import { Layout } from "./components/Layout";
 import { CartSidebar } from "./components/CartSidebar";
 import { CheckoutModal } from "./components/CheckoutModal";
 import Home from "./pages/Home";
@@ -25,12 +24,13 @@ export default function App() {
     setIsCheckoutOpen(true);
   };
 
+  const handleCartOpen = () => setIsCartOpen(true);
+
   return (
     <CompareProvider>
       <CartProvider>
         <WishlistProvider>
-        <Router>
-          <div className="min-h-screen bg-[#0F0F1E] font-['Inter']">
+          <Router>
             <Toaster
               position="top-right"
               toastOptions={{
@@ -41,17 +41,17 @@ export default function App() {
                 },
               }}
             />
-            <Header onCartOpen={() => setIsCartOpen(true)} />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/accessories" element={<Accessories />} />
-              <Route path="/collections" element={<Collections />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/custom-design-order" element={<CustomDesignOrder />} />
-            </Routes>
-            <Footer />
+            <Layout onCartOpen={handleCartOpen}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/accessories" element={<Accessories />} />
+                <Route path="/collections" element={<Collections />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/custom-design-order" element={<CustomDesignOrder />} />
+              </Routes>
+            </Layout>
             <CartSidebar
               isOpen={isCartOpen}
               onClose={() => setIsCartOpen(false)}
@@ -61,8 +61,7 @@ export default function App() {
               isOpen={isCheckoutOpen}
               onClose={() => setIsCheckoutOpen(false)}
             />
-          </div>
-        </Router>
+          </Router>
         </WishlistProvider>
       </CartProvider>
     </CompareProvider>
