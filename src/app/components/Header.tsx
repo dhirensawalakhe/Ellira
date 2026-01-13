@@ -1,14 +1,12 @@
-import {
-  Phone,
-  ShoppingBag,
-  Search,
-  Menu,
-  X,
-} from "lucide-react";
+import { Heart, Phone, ShoppingBag, Search, Menu, X, GitCompare, User } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
+import { useCompare } from "../contexts/CompareContext";
+import { useWishlist } from "../contexts/WishlistContext";
 import { ContactSection } from "./ContactSection";
+import { CompareModal } from "./CompareModal";
+import { LoginModal } from "./LoginModal";
 
 interface HeaderProps {
   onCartOpen: () => void;
@@ -16,9 +14,13 @@ interface HeaderProps {
 
 export function Header({ onCartOpen }: HeaderProps) {
   const { cartCount } = useCart();
+  const { compareCount } = useCompare();
+  const { wishlistCount } = useWishlist();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isCompareOpen, setIsCompareOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <>
@@ -40,17 +42,38 @@ export function Header({ onCartOpen }: HeaderProps) {
 
             <nav className="hidden lg:flex items-center gap-12">
               <Link
-                to="/shop"
+                to="/"
                 className="relative text-[#F8F6F1] hover:text-[#C9A961] transition-all duration-300 text-sm tracking-wider uppercase font-medium group"
               >
-                Shop All
+                Home
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link
-                to="/collections"
+                to="/shop"
                 className="relative text-[#F8F6F1] hover:text-[#C9A961] transition-all duration-300 text-sm tracking-wider uppercase font-medium group"
               >
-                Collections
+                Shop
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link
+                to="/accessories"
+                className="relative text-[#F8F6F1] hover:text-[#C9A961] transition-all duration-300 text-sm tracking-wider uppercase font-medium group"
+              >
+                Accessories
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link
+                to="/custom-design-order"
+                className="relative text-[#F8F6F1] hover:text-[#C9A961] transition-all duration-300 text-sm tracking-wider uppercase font-medium group"
+              >
+                Custom Design Order
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link
+                to="/about"
+                className="relative text-[#F8F6F1] hover:text-[#C9A961] transition-all duration-300 text-sm tracking-wider uppercase font-medium group"
+              >
+                About Us
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link
@@ -60,16 +83,36 @@ export function Header({ onCartOpen }: HeaderProps) {
                 Contact Us
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] transition-all duration-300 group-hover:w-full"></span>
               </Link>
-              <Link
-                to="/about"
-                className="relative text-[#F8F6F1] hover:text-[#C9A961] transition-all duration-300 text-sm tracking-wider uppercase font-medium group"
-              >
-                About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
             </nav>
 
             <div className="flex items-center gap-6">
+              <button
+                onClick={() => setIsLoginOpen(true)}
+                className="relative text-[#F8F6F1] hover:text-[#C9A961]"
+              >
+                <User className="w-5 h-5" />
+              </button>
+              <button
+                className="relative text-[#F8F6F1] hover:text-[#C9A961]"
+              >
+                <Heart className="w-5 h-5" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#C9A961] text-[#0F0F1E] text-[10px] rounded-full flex items-center justify-center font-medium">
+                    {wishlistCount}
+                  </span>
+                )}
+              </button>
+              <button
+                onClick={() => setIsCompareOpen(true)}
+                className="relative text-[#F8F6F1] hover:text-[#C9A961]"
+              >
+                <GitCompare className="w-5 h-5" />
+                {compareCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#C9A961] text-[#0F0F1E] text-[10px] rounded-full flex items-center justify-center font-medium">
+                    {compareCount}
+                  </span>
+                )}
+              </button>
               <button
                 onClick={onCartOpen}
                 className="relative text-[#F8F6F1] hover:text-[#C9A961]"
@@ -110,6 +153,14 @@ export function Header({ onCartOpen }: HeaderProps) {
           </div>
         </div>
       )}
+
+      {/* Compare Modal */}
+      {isCompareOpen && (
+        <CompareModal isOpen={isCompareOpen} onClose={() => setIsCompareOpen(false)} />
+      )}
+
+      {/* Login Modal */}
+      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </>
   );
 }

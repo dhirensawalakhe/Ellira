@@ -36,18 +36,18 @@ export function CompareModal({ isOpen, onClose }: CompareModalProps) {
   return (
     <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
       <div className="bg-[#1A1A2E] max-w-7xl w-full max-h-[90vh] overflow-y-auto border border-[#C9A961]/20">
-        <div className="p-6 border-b border-[#C9A961]/20">
+        <div className="p-4 md:p-6 border-b border-[#C9A961]/20">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <GitCompare className="w-6 h-6 text-[#C9A961]" />
-              <h2 className="text-2xl font-['Playfair_Display'] text-[#F8F6F1]">
+            <div className="flex items-center gap-2 md:gap-3">
+              <GitCompare className="w-5 h-5 md:w-6 md:h-6 text-[#C9A961]" />
+              <h2 className="text-lg md:text-2xl font-['Playfair_Display'] text-[#F8F6F1]">
                 Compare Products ({compareItems.length})
               </h2>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
               <button
                 onClick={clearCompare}
-                className="px-4 py-2 text-[#8E8E93] hover:text-[#C9A961] transition-colors text-sm"
+                className="px-3 py-1 md:px-4 md:py-2 text-[#8E8E93] hover:text-[#C9A961] transition-colors text-xs md:text-sm"
               >
                 Clear All
               </button>
@@ -55,7 +55,7 @@ export function CompareModal({ isOpen, onClose }: CompareModalProps) {
                 onClick={onClose}
                 className="text-[#8E8E93] hover:text-[#C9A961] transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             </div>
           </div>

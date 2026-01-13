@@ -46,12 +46,12 @@ export function Footer() {
           <div>
             <h4 className="font-['Playfair_Display'] text-[#F8F6F1] text-lg mb-6">Customer Service</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="#" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Shipping & Delivery</a></li>
-              <li><a href="#" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Returns & Refunds</a></li>
-              <li><a href="#" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Installation Guide</a></li>
-              <li><a href="#" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Warranty Policy</a></li>
-              <li><a href="#" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">FAQs</a></li>
-              <li><a href="#" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Support Center</a></li>
+              <li><Link to="/contact" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Shipping & Delivery</Link></li>
+              <li><Link to="/contact" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Returns & Refunds</Link></li>
+              <li><Link to="/about" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Installation Guide</Link></li>
+              <li><Link to="/about" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Warranty Policy</Link></li>
+              <li><Link to="/contact" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">FAQs</Link></li>
+              <li><Link to="/contact" className="text-[#8E8E93] hover:text-[#C9A961] transition-colors">Support Center</Link></li>
             </ul>
           </div>
 

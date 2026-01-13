@@ -40,7 +40,7 @@ export function ShopBySize() {
 
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A961]"></div>
             <span className="text-[#C9A961] text-xs tracking-[0.3em] uppercase">Find Your Perfect Fit</span>

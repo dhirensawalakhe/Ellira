@@ -46,14 +46,14 @@ const categories = [
 
 export function CategoriesSection() {
   return (
-    <section className="py-32 bg-gradient-to-b from-[#1A1A2E] via-[#0F0F1E] to-[#1A1A2E] relative overflow-hidden">
+    <section className="py-16 md:py-32 bg-gradient-to-b from-[#1A1A2E] via-[#0F0F1E] to-[#1A1A2E] relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#C9A961]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C9A961]/5 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced Section Header */}
-        <div className="mb-20 text-center animate-fade-in-up">
+        <div className="mb-12 md:mb-20 text-center animate-fade-in-up">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A961] animate-fade-in-left"></div>
             <span className="text-[#C9A961] text-xs tracking-[0.3em] uppercase font-medium hover-scale animate-fade-in-up">Premium Collections</span>

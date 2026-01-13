@@ -21,7 +21,7 @@ export function CartSidebar({ isOpen, onClose, onCheckout }: CartSidebarProps) {
       ></div>
 
       {/* Sidebar */}
-      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-gradient-to-b from-[#1A1A2E] via-[#25253C] to-[#1A1A2E] z-50 shadow-2xl border-l border-[#C9A961]/20 flex flex-col">
+      <div className="fixed right-0 top-0 h-full w-full md:max-w-md bg-gradient-to-b from-[#1A1A2E] via-[#25253C] to-[#1A1A2E] z-50 shadow-2xl md:border-l border-[#C9A961]/20 flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-8 border-b border-[#C9A961]/30 bg-[#0F0F1E]/50">
           <div className="flex items-center gap-4">
@@ -44,50 +44,50 @@ export function CartSidebar({ isOpen, onClose, onCheckout }: CartSidebarProps) {
         </div>
 
         {/* Cart Items */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-4 md:p-6">
           {cartItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <ShoppingBag className="w-16 h-16 text-[#8E8E93] mb-4" />
-              <p className="text-[#8E8E93] text-lg">Your cart is empty</p>
+              <ShoppingBag className="w-12 h-12 md:w-16 md:h-16 text-[#8E8E93] mb-4" />
+              <p className="text-[#8E8E93] text-base md:text-lg">Your cart is empty</p>
               <button
                 onClick={onClose}
-                className="mt-6 px-6 py-3 bg-[#C9A961] text-[#0F0F1E] hover:bg-[#D4B574] transition-colors text-sm uppercase tracking-wide"
+                className="mt-4 md:mt-6 px-4 md:px-6 py-2 md:py-3 bg-[#C9A961] text-[#0F0F1E] hover:bg-[#D4B574] transition-colors text-sm uppercase tracking-wide"
               >
                 Continue Shopping
               </button>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {cartItems.map((item) => (
                 <div
                   key={item.id}
-                  className="flex gap-4 bg-[#0F0F1E] border border-[#C9A961]/10 p-4"
+                  className="flex gap-3 md:gap-4 bg-[#0F0F1E] border border-[#C9A961]/10 p-3 md:p-4"
                 >
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-24 h-24 object-cover"
+                    className="w-16 h-16 md:w-24 md:h-24 object-cover flex-shrink-0"
                   />
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <h3 className="text-[#F8F6F1] font-['Playfair_Display'] text-sm mb-1 line-clamp-2">
                       {item.name}
                     </h3>
-                    <p className="text-[#C9A961] text-xs mb-3">{item.category}</p>
-                    <div className="flex items-center justify-between">
-                      <p className="text-[#C9A961] font-medium">
+                    <p className="text-[#C9A961] text-xs mb-2 md:mb-3">{item.category}</p>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <p className="text-[#C9A961] font-medium text-sm md:text-base">
                         ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                       </p>
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="w-7 h-7 border border-[#C9A961]/30 text-[#C9A961] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center"
+                          className="w-6 h-6 md:w-7 md:h-7 border border-[#C9A961]/30 text-[#C9A961] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
-                        <span className="text-[#F8F6F1] w-8 text-center">{item.quantity}</span>
+                        <span className="text-[#F8F6F1] w-6 md:w-8 text-center text-sm">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-7 h-7 border border-[#C9A961]/30 text-[#C9A961] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center"
+                          className="w-6 h-6 md:w-7 md:h-7 border border-[#C9A961]/30 text-[#C9A961] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
@@ -96,9 +96,9 @@ export function CartSidebar({ isOpen, onClose, onCheckout }: CartSidebarProps) {
                   </div>
                   <button
                     onClick={() => removeFromCart(item.id)}
-                    className="text-[#8E8E93] hover:text-red-500 transition-colors self-start"
+                    className="text-[#8E8E93] hover:text-red-500 transition-colors self-start flex-shrink-0"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-4 h-4 md:w-5 md:h-5" />
                   </button>
                 </div>
               ))}

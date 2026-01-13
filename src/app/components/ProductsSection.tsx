@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Heart, Eye, ShoppingCart, Grid3x3, LayoutGrid, ChevronLeft, ChevronRight, Repeat, X } from 'lucide-react';
 import * as Slider from '@radix-ui/react-slider';
 import { useCart } from '../contexts/CartContext';
+import { useCompare } from '../contexts/CompareContext';
 import { toast } from 'sonner';
 
 const allProducts = [
@@ -141,6 +142,7 @@ const brands = [
 
 export function ProductsSection() {
   const { addToCart } = useCart();
+  const { addToCompare, compareCount, isInCompare } = useCompare();
   const [priceRange, setPriceRange] = useState([0, 177870]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [stockStatus, setStockStatus] = useState({
@@ -154,6 +156,7 @@ export function ProductsSection() {
   const [currentPage, setCurrentPage] = useState(1);
   const [quickViewProduct, setQuickViewProduct] = useState<typeof allProducts[0] | null>(null);
   const [wishlist, setWishlist] = useState<number[]>([]);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   const handleBrandToggle = (brand: string) => {
     setSelectedBrands(prev =>
@@ -222,12 +225,41 @@ export function ProductsSection() {
     toast.success('Added to cart successfully!');
   };
 
+  const handleAddToCompare = (product: typeof allProducts[0]) => {
+    if (isInCompare(product.id)) {
+      toast.info('Product already in compare list');
+      return;
+    }
+    if (compareCount >= 4) {
+      toast.error('You can compare up to 4 products at a time');
+      return;
+    }
+    addToCompare(product);
+  };
+
   return (
-    <section className="py-24 bg-[#0F0F1E]">
-      <div className="container mx-auto px-6">
-        <div className="flex gap-8">
-          {/* Sidebar Filters */}
-          <aside className="w-72 flex-shrink-0 space-y-8">
+    <section className="py-12 md:py-24 bg-[#0F0F1E]">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex gap-4 md:gap-8">
+          {/* Mobile Filter Toggle */}
+          <button
+            onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+            className="md:hidden fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#C9A961] text-[#0F0F1E] rounded-full shadow-lg flex items-center justify-center"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+            </svg>
+          </button>
+
+          {/* Filters Sidebar */}
+          <aside className={`fixed md:relative top-0 left-0 h-full md:h-auto w-80 md:w-72 bg-[#1A1A2E] md:bg-transparent z-50 md:z-auto transform ${isFiltersOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 md:flex-shrink-0 md:space-y-8 p-6 md:p-0 overflow-y-auto md:overflow-visible`}>
+            {/* Close button for mobile */}
+            <button
+              onClick={() => setIsFiltersOpen(false)}
+              className="md:hidden absolute top-4 right-4 w-8 h-8 bg-[#25253C] border border-[#C9A961]/30 rounded-lg flex items-center justify-center text-[#8E8E93] hover:text-[#C9A961]"
+            >
+              <X className="w-5 h-5" />
+            </button>
             {/* Price Filter */}
             <div className="bg-gradient-to-br from-[#1A1A2E] to-[#25253C] border border-[#C9A961]/20 p-8 shadow-lg shadow-[#C9A961]/5">
               <h3 className="text-[#F8F6F1] font-['Playfair_Display'] text-xl mb-6 border-b border-[#C9A961]/20 pb-4">Filter By Price</h3>
@@ -378,31 +410,33 @@ export function ProductsSection() {
           {/* Main Content */}
           <div className="flex-1">
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-12 bg-gradient-to-r from-[#1A1A2E] via-[#25253C] to-[#1A1A2E] border border-[#C9A961]/20 p-6 shadow-lg shadow-[#C9A961]/5">
+            <div className="flex flex-col md:flex-row md:flex-wrap items-start md:items-center justify-between gap-4 mb-8 md:mb-12 bg-gradient-to-r from-[#1A1A2E] via-[#25253C] to-[#1A1A2E] border border-[#C9A961]/20 p-4 md:p-6 shadow-lg shadow-[#C9A961]/5">
               <div className="flex items-center gap-2 text-[#8E8E93] text-sm">
-                <span>Showing {((currentPage - 1) * itemsPerPage) + 1}–{Math.min(currentPage * itemsPerPage, filteredProducts.length)} of {filteredProducts.length} results</span>
+                <span className="text-xs md:text-sm">Showing {((currentPage - 1) * itemsPerPage) + 1}–{Math.min(currentPage * itemsPerPage, filteredProducts.length)} of {filteredProducts.length} results</span>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
                 {/* Items per page */}
                 <div className="flex items-center gap-2">
                   <span className="text-[#8E8E93] text-sm">Show:</span>
-                  {[9, 12, 18, 24].map((count) => (
-                    <button
-                      key={count}
-                      onClick={() => {
-                        setItemsPerPage(count);
-                        setCurrentPage(1);
-                      }}
-                      className={`px-2 py-1 text-sm ${
-                        itemsPerPage === count
-                          ? 'text-[#C9A961] border-b border-[#C9A961]'
-                          : 'text-[#8E8E93] hover:text-[#C9A961]'
-                      }`}
-                    >
-                      {count}
-                    </button>
-                  ))}
+                  <div className="flex gap-1">
+                    {[9, 12, 18, 24].map((count) => (
+                      <button
+                        key={count}
+                        onClick={() => {
+                          setItemsPerPage(count);
+                          setCurrentPage(1);
+                        }}
+                        className={`px-2 py-1 text-sm ${
+                          itemsPerPage === count
+                            ? 'text-[#C9A961] border-b border-[#C9A961]'
+                            : 'text-[#8E8E93] hover:text-[#C9A961]'
+                        }`}
+                      >
+                        {count}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 {/* View Mode */}
@@ -429,7 +463,7 @@ export function ProductsSection() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-[#25253C] text-[#F8F6F1] border border-[#C9A961]/20 px-4 py-2 text-sm focus:outline-none focus:border-[#C9A961]"
+                  className="bg-[#25253C] text-[#F8F6F1] border border-[#C9A961]/20 px-3 md:px-4 py-2 text-sm focus:outline-none focus:border-[#C9A961] w-full sm:w-auto"
                 >
                   <option value="default">Default sorting</option>
                   <option value="popularity">Sort by popularity</option>
@@ -464,8 +498,10 @@ export function ProductsSection() {
                     {/* Quick Actions */}
                     <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button
-                        onClick={() => toast.info('Compare feature coming soon!')}
-                        className="w-10 h-10 bg-[#1A1A2E] border border-[#C9A961]/30 rounded-sm flex items-center justify-center hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all text-[#C9A961]"
+                        onClick={() => handleAddToCompare(product)}
+                        className={`w-10 h-10 bg-[#1A1A2E] border border-[#C9A961]/30 rounded-sm flex items-center justify-center hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all ${
+                          isInCompare(product.id) ? 'bg-[#C9A961] text-[#0F0F1E]' : 'text-[#C9A961]'
+                        }`}
                         title="Compare"
                       >
                         <Repeat className="w-4 h-4" />
@@ -517,19 +553,19 @@ export function ProductsSection() {
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div className="flex justify-center items-center gap-2">
+              <div className="flex justify-center items-center gap-1 md:gap-2">
                 <button
                   onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                   disabled={currentPage === 1}
-                  className="w-10 h-10 border border-[#C9A961]/30 text-[#8E8E93] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-8 h-8 md:w-10 md:h-10 border border-[#C9A961]/30 text-[#8E8E93] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-3 h-3 md:w-4 md:h-4" />
                 </button>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`w-10 h-10 border transition-all ${
+                    className={`w-8 h-8 md:w-10 md:h-10 border transition-all text-sm ${
                       currentPage === page
                         ? 'bg-[#C9A961] text-[#0F0F1E] border-[#C9A961]'
                         : 'border-[#C9A961]/30 text-[#8E8E93] hover:bg-[#C9A961] hover:text-[#0F0F1E]'
@@ -541,9 +577,9 @@ export function ProductsSection() {
                 <button
                   onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                   disabled={currentPage === totalPages}
-                  className="w-10 h-10 border border-[#C9A961]/30 text-[#8E8E93] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-8 h-8 md:w-10 md:h-10 border border-[#C9A961]/30 text-[#8E8E93] hover:bg-[#C9A961] hover:text-[#0F0F1E] transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
                 </button>
               </div>
             )}

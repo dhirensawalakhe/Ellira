@@ -33,7 +33,7 @@ export function TestimonialsSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A961]"></div>
             <span className="text-[#C9A961] text-xs tracking-[0.3em] uppercase">What Our Customers Say</span>
@@ -87,7 +87,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-20">
+        <div className="text-center mt-12 md:mt-20">
           <p className="text-[#C7C7CC] mb-8 text-xl">Join 10,000+ satisfied customers</p>
           <button className="group relative px-14 py-5 bg-gradient-to-r from-[#C9A961] to-[#D4B574] text-[#0F0F1E] hover:shadow-[0_0_40px_rgba(201,169,97,0.4)] hover:scale-105 transition-all duration-500 overflow-hidden rounded-sm">
             <span className="relative z-10 tracking-wider uppercase text-sm font-semibold">Start Your Journey</span>

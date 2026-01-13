@@ -48,14 +48,14 @@ export function FeaturedCollection() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A961]"></div>
+        <div className="text-center mb-12 md:mb-20">
+          <div className="flex items-center justify-center gap-4 mb-4 md:mb-6">
+            <div className="w-8 h-px md:w-12 bg-gradient-to-r from-transparent to-[#C9A961]"></div>
             <span className="text-[#C9A961] text-xs tracking-[0.3em] uppercase">Curated Selection</span>
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#C9A961]"></div>
+            <div className="w-8 h-px md:w-12 bg-gradient-to-l from-transparent to-[#C9A961]"></div>
           </div>
-          <h2 className="font-['Playfair_Display'] text-[#F8F6F1] mb-4 text-4xl md:text-5xl">Wall-Mounted Collection</h2>
-          <p className="text-[#8E8E93] max-w-2xl mx-auto text-lg">
+          <h2 className="font-['Playfair_Display'] text-[#F8F6F1] mb-4 text-3xl md:text-4xl lg:text-5xl">Wall-Mounted Collection</h2>
+          <p className="text-[#8E8E93] max-w-2xl mx-auto text-base md:text-lg px-4 md:px-0">
             Space-saving elegance meets divine craftsmanship. Perfect for modern apartments and compact prayer spaces.
           </p>
         </div>
